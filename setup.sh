@@ -16,6 +16,7 @@ git config -f .gitmodules --get-regexp '^submodule\..*\.path$' |
   done
 
 git submodule update --init --recursive 
+git reset bundle/*
 
 echo Creating symbolic link...
 if [[ -h ~/.vimrc ]] || [[ -f ~/.vimrc ]]; then

@@ -22,7 +22,7 @@ set autoindent        " automatically indent line.
 set hid               " change buffer without saving.
 
 " make dracula the default colorscheme:
-colorscheme dracula
+colorscheme PaperColor
 
 " search options:
 set hlsearch          " highlighted search.
