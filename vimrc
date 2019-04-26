@@ -21,8 +21,9 @@ set autoindent        " automatically indent line.
 " usability:
 set hid               " change buffer without saving.
 
-" make dracula the default colorscheme:
-colorscheme PaperColor
+" select colorscheme
+colorscheme gruvbox
+set background=dark   " select gruvbox's dark theme (light is default).
 
 " search options:
 set hlsearch          " highlighted search.

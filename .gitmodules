@@ -7,3 +7,6 @@
 [submodule "bundle/br-colorschemes"]
 	path = bundle/br-colorschemes
 	url = git@github.com:BarretRen/vim-colorscheme.git
+[submodule "bundle/gruvbox"]
+	path = bundle/gruvbox
+	url = git@github.com:morhetz/gruvbox.git
