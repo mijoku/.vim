@@ -2,13 +2,36 @@
 MODFILE=bundles
 BDIR=bundle
 
-while getopts "ica:n:r:" arg; do
+usage() {
+  printf "
+Usage: $0 -[hicanr] <arg>
+If no flag is given, nothing will be executed.
+Flags:
+  i       : Initialize the config view. Sets up pathogen and
+            does an initial download of bundles defined in 
+            file 'bundles'.
+  c       : Clean up config view. Needs to be initialized again
+            afterwards using -i.
+  a <arg> : Add repository in <arg> to 'bundles' and downloads
+            bundle data. Uses -n as optional, additional parameter.
+  n <arg> : Optional. Only used in junction with -a <optarg>. Define 
+            bundle name explicitly instead of deriving it from the 
+            repository path.
+  r <arg> : Remove the bundle in <arg> from 'bundles' and view.
+  h       : Show this help.
+"
+    
+}
+
+while getopts "hica:n:r:" arg; do
   case $arg in 
     i) DOINIT=true;;
     c) DODEINIT=true;;
     a) REPOSTRING=$OPTARG;;
     n) MODULENAME=$OPTARG;;
     r) REMNAME=$OPTARG;;
+    h) usage; exit 0;;
+    *) usage; exit 1;;
   esac
 done
 

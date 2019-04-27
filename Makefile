@@ -1,11 +1,5 @@
 #/bin/make
 
-# TODO: check for dependencies prior to execution.
-# dependencies up until now:
-# 	curl
-# 	git
-# 	sed
-
 ALDIR := autoload
 BDIR ?= bundle
 
