@@ -14,7 +14,7 @@ $(ALDIR) $(BDIR):
 conffile: ~/.vimrc
 ~/.vimrc: vimrc
 	@echo Setting up symlink to vimrc...
-	@ln -sf $^ $@
+	@ln -sf $(shell pwd)/$^ $@
 
 init: pathogen conffile
 
