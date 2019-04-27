@@ -19,6 +19,7 @@ Flags:
             repository path.
   r <arg> : Remove the bundle in <arg> from 'bundles' and view.
   h       : Show this help.
+
 "
     
 }
@@ -40,6 +41,11 @@ update_git_submodules () {
   git reset -q .gitmodules
   git reset -q $BDIR/*
 }
+
+# in case $MODFILE does not exist, create it here.
+if [[ ! -e $MODFILE ]]; then
+  touch $MODFILE
+fi
 
 # -a: mapping new bundle from given repository link.
 if [[ -n $REPOSTRING ]]; then
