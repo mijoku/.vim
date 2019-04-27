@@ -30,5 +30,17 @@ set hlsearch          " highlighted search.
 set incsearch         " do incremental searching. 
 
 " NERDtree
-nmap tt :NERDTreeToggle<CR>
-nmap tf :NERDTreeFind<CR>
+nnoremap <silent> tt :NERDTreeToggle<CR>
+nnoremap <silent> tf :NERDTreeFind<CR>
+
+" tabs
+function! OpenNewTab()
+  call inputsave()
+  let fn = input("File: ","","file")
+  call inputrestore()
+  exec 'tabnew '.fn
+endfunction
+nnoremap <silent> tn :call OpenNewTab()<CR>
+nnoremap <silent> tc :tabclose<CR>
+nnoremap <silent> tC :tabonly<CR>
+
