@@ -28,3 +28,7 @@ set background=dark   " select gruvbox's dark theme (light is default).
 " search options:
 set hlsearch          " highlighted search.
 set incsearch         " do incremental searching. 
+
+" NERDtree
+nmap tt :NERDTreeToggle<CR>
+nmap tf :NERDTreeFind<CR>
