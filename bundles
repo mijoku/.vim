@@ -3,3 +3,4 @@
 [gruvbox] git@github.com:morhetz/gruvbox.git
 [vim-colorscheme] git@github.com:BarretRen/vim-colorscheme.git
 [nerdtree] git@github.com:scrooloose/nerdtree.git
+[vim-terminal] git@github.com:tc50cal/vim-terminal.git
