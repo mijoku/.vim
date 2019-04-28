@@ -44,3 +44,6 @@ nnoremap <silent> tn :call OpenNewTab()<CR>
 nnoremap <silent> tc :tabclose<CR>
 nnoremap <silent> tC :tabonly<CR>
 
+" terminal
+nnoremap <silent> ,t :terminal<CR>
+
