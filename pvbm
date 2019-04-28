@@ -18,19 +18,21 @@ Flags:
             bundle name explicitly instead of deriving it from the 
             repository path.
   r <arg> : Remove the bundle in <arg> from 'bundles' and view.
+  l       : List bundles loaded in file '$MODFILE'.
   h       : Show this help.
 
 "
     
 }
 
-while getopts "hica:n:r:" arg; do
+while getopts "hlica:n:r:" arg; do
   case $arg in 
     i) DOINIT=true;;
     c) DODEINIT=true;;
     a) REPOSTRING=$OPTARG;;
     n) MODULENAME=$OPTARG;;
     r) REMNAME=$OPTARG;;
+    l) LISTMODS=true;;
     h) usage; exit 0;;
     *) usage; exit 1;;
   esac
@@ -45,6 +47,11 @@ update_git_submodules () {
 # in case $MODFILE does not exist, create it here.
 if [[ ! -e $MODFILE ]]; then
   touch $MODFILE
+fi
+
+# -l listing enabled bundles and exiting.
+if [[ -n $LISTMODS ]]; then
+  cat $MODFILE | sed -r "s/^\[(.*)\][[:space:]].+$/\1/"
 fi
 
 # -a: mapping new bundle from given repository link.
