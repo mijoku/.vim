@@ -1,4 +1,4 @@
-# Pathongen Vim Bundle Manager
+# Pathogen Vim Bundle Manager
 ## Motivation and description
 This repository holds my vim configuration file, information on which modules/bundles I use and a script to manage and download these.
 The main entry points to the setup are three files:
