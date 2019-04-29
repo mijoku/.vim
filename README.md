@@ -1,4 +1,4 @@
-# Pathongen Vim Bundle Manager
+# Pathogen Vim Bundle Manager
 ## Motivation and description
 This repository holds my vim configuration file, information on which modules/bundles I use and a script to manage and download these.
 The main entry points to the setup are three files:
@@ -30,6 +30,7 @@ Flags:
             bundle name explicitly instead of deriving it from the 
             repository path.
   r <arg> : Remove the bundle in <arg> from 'bundles' and view.
+  l       : List bundles loaded in file 'bundles'.
   h       : Show this help.
 ```
 Flags `a`, `n` and `r` are for adding and removing bundles. 
