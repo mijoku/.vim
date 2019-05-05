@@ -3,7 +3,7 @@ call pathogen#infect()
 
 " spaces and tabs:
 set ts=2 sw=2 sts=2 smarttab expandtab
-set smartindent       " 
+set smartindent
 set autoindent        " automatically indent line.
 
 " user interface:
@@ -11,7 +11,7 @@ set title             " show title all the time.
 set number            " show line numbers.
 set relativenumber    " above and below current line, numbers are relative.
 set ruler             " always show cursor.
-set cursorline        " highlight currently selected line. 
+set cursorline        " highlight currently selected line.
 set showcmd
 filetype indent on
 set wildmenu          " visual autocomplete for :!
@@ -44,7 +44,7 @@ set hlsearch          " highlighted search.
 set lazyredraw        " redraw only when vim needs to.
 set showmatch         " show matching brackets when text indicator is over them.
 set magic             " enable regular expressions.
-set incsearch         " do incremental searching. 
+set incsearch         " do incremental searching.
 
 " NERDtree
 nnoremap <silent> tt :NERDTreeToggle<CR>
@@ -68,6 +68,7 @@ nnoremap <silent> ,t :terminal<CR>
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#left_sep=''
 let g:airline#extensions#tabline#left_alt_sep=''
+let g:airline#extensions#tabline#formatter='unique_tail_improved'
 
 
 if !exists('g:airline_symbols')
