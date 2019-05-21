@@ -58,7 +58,7 @@ The scripts use these tools:
 * make
 * curl
 * bash
-  * sed
+* sed
 * git
 
 
