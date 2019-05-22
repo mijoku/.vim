@@ -63,6 +63,15 @@ nnoremap <silent> tC :tabonly<CR>
 
 " terminal
 nnoremap <silent> ,t :terminal<CR>
+                      " execute the command currently under the cursor.
+nnoremap <silent> ,e :.w !sh<CR>
+                      " execute the command currently under the cursor AND
+                      " insert the output below.
+function! EscapePercentSign(ln)
+  return substitute(a:ln,"%","\\\\%","g")
+endfunction
+nnoremap <silent> ,E :exec 'r!'.EscapePercentSign(getline('.'))<CR>
+
 
 " initialize airline
 let g:airline#extensions#tabline#enabled=1
