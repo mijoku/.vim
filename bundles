@@ -6,3 +6,4 @@
 [vim-airline] git@github.com:vim-airline/vim-airline.git
 [vim-gitgutter] git@github.com:airblade/vim-gitgutter.git
 [vim-fugitive] git@github.com:tpope/vim-fugitive.git
+[editorconfig-vim] git@github.com:editorconfig/editorconfig-vim.git

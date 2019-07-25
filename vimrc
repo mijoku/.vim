@@ -94,3 +94,7 @@ let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.dirty='⚡'
 
+" editorconfig settings
+                      " lets editorconfig work well with fugitive and disables
+                      " config load over ssh.
+let g:EditorConfig_exclude_patterns = ['fugitive://.\*', 'scp://.\*']
