@@ -12,6 +12,7 @@ Flags:
             file 'bundles'.
   c       : Clean up config view. Needs to be initialized again
             afterwards using -i.
+  u       : Update all submodules.
   a <arg> : Add repository in <arg> to 'bundles' and downloads
             bundle data. Uses -n as optional, additional parameter.
   n <arg> : Optional. Only used in junction with -a <optarg>. Define 
@@ -25,10 +26,11 @@ Flags:
     
 }
 
-while getopts "hlica:n:r:" arg; do
+while getopts "hlicua:n:r:" arg; do
   case $arg in 
     i) DOINIT=true;;
     c) DODEINIT=true;;
+    u) DOUPDATE=true;;
     a) REPOSTRING=$OPTARG;;
     n) MODULENAME=$OPTARG;;
     r) REMNAME=$OPTARG;;
@@ -39,7 +41,7 @@ while getopts "hlica:n:r:" arg; do
 done
 
 update_git_submodules () {
-  git submodule update --init --recursive 
+  git submodule update --init --recursive
   git reset -q .gitmodules
   git reset -q $BDIR/*
 }
@@ -125,5 +127,16 @@ if [[ -n $DOINIT ]]; then
     fi
   done < $MODFILE
   update_git_submodules
+fi
+
+# -u: go into each module directory and update the bundle.
+if [[ -n $DOUPDATE ]]; then
+  while read -r ln; do
+    if [[ -n $ln ]]; then
+      pushd $BDIR/`echo $ln | sed -r "s/^\[(.*)\][[:space:]]*(.*)$/\1/"`
+      git pull --recurse-submodules
+      popd
+    fi
+  done < $MODFILE
 fi
 
