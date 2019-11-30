@@ -11,7 +11,7 @@ set title             " show title all the time.
 set number            " show line numbers.
 set relativenumber    " above and below current line, numbers are relative.
 set ruler             " always show cursor.
-set cursorline        " highlight currently selected line.
+"set cursorline        " highlight currently selected line.
 set showcmd
 filetype indent on
 set wildmenu          " visual autocomplete for :!
@@ -33,8 +33,9 @@ set hid               " change buffer without saving.
 set backspace=eol,start,indent
 
 " select colorscheme
-colorscheme gruvbox
-set background=dark   " select gruvbox's dark theme (light is default).
+"colorscheme gruvbox
+"set background=dark   " select gruvbox's dark theme (light is default).
+colorscheme wal
 hi Normal guibg=NONE ctermbg=NONE
 
 " search options:
