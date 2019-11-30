@@ -35,6 +35,7 @@ set backspace=eol,start,indent
 " select colorscheme
 colorscheme gruvbox
 set background=dark   " select gruvbox's dark theme (light is default).
+"colorscheme wal
 hi Normal guibg=NONE ctermbg=NONE
 
 " search options:
