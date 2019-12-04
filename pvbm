@@ -2,13 +2,20 @@
 MODFILE=bundles
 BDIR=bundle
 
+# mac uses non-gnu sed. therefore, use -E for regex instead of -r
+if [[ $(uname) == Darwin ]]; then
+  REGEX=-E
+else
+  REGEX=-r
+fi
+
 usage() {
   printf "
 Usage: $0 -[hicanr] <arg>
 If no flag is given, nothing will be executed.
 Flags:
   i       : Initialize the config view. Sets up pathogen and
-            does an initial download of bundles defined in 
+            does an initial download of bundles defined in
             file 'bundles'.
   c       : Clean up config view. Needs to be initialized again
             afterwards using -i.
@@ -53,7 +60,7 @@ fi
 
 # -l listing enabled bundles and exiting.
 if [[ -n $LISTMODS ]]; then
-  cat $MODFILE | sed -r "s/^\[(.*)\][[:space:]].+$/\1/"
+  cat $MODFILE | sed $REGEX "s/^\[(.*)\][[:space:]].+$/\1/"
 fi
 
 # -a: mapping new bundle from given repository link.
@@ -61,14 +68,14 @@ if [[ -n $REPOSTRING ]]; then
   # check, whether given repository is already mapped.
   if [[ `grep $REPOSTRING -c $MODFILE` -gt 0 ]]; then
     MODLINE=`grep -m 1 $REPOSTRING $MODFILE`
-    CURRMODNAME=`echo $MODLINE | sed -r "s/^\[(.*)\].*$/\1/"` 
+    CURRMODNAME=`echo $MODLINE | sed $REGEX "s/^\[(.*)\].*$/\1/"` 
     echo Given repository already mapped as bundle [$CURRMODNAME].
   else
     # -n: if the optional bundle name is not given, try to extract it
     #     from the repostring. the regex is geared to github repositories.
     if [[ -z $MODULENAME ]]; then
       echo Trying to extract bundle name from given repository string...
-      MODULENAME=`echo $REPOSTRING | sed -r "s/^.*\/(.+)\.git$/\1/"`
+      MODULENAME=`echo $REPOSTRING | sed $REGEX "s/^.*\/(.+)\.git$/\1/"`
       if [[ -n $MODULENAME ]]; then
         # some string could be extracted. check with user.
         read -r -p "Is [$MODULENAME] okay? [Y/n] " yn
@@ -123,7 +130,7 @@ if [[ -n $DOINIT ]]; then
   make init
   while read -r ln; do
     if [[ -n $ln ]]; then
-      git submodule add --force `echo $ln | sed -r "s/^\[(.*)\][[:space:]]*(.*)$/\2\ $BDIR\/\1/"`
+      git submodule add --force `echo $ln | sed $REGEX "s/^\[(.*)\][[:space:]]*(.*)$/\2\ $BDIR\/\1/"`
     fi
   done < $MODFILE
   update_git_submodules
@@ -133,7 +140,7 @@ fi
 if [[ -n $DOUPDATE ]]; then
   while read -r ln; do
     if [[ -n $ln ]]; then
-      pushd $BDIR/`echo $ln | sed -r "s/^\[(.*)\][[:space:]]*(.*)$/\1/"`
+      pushd $BDIR/`echo $ln | sed $REGEX "s/^\[(.*)\][[:space:]]*(.*)$/\1/"`
       git pull --recurse-submodules
       popd
     fi
