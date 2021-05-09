@@ -1,7 +1,6 @@
 [dracula-theme] git@github.com:dracula/vim.git
 [jedi-vim] git@github.com:davidhalter/jedi-vim.git
 [gruvbox] git@github.com:morhetz/gruvbox.git
-[vim-colorscheme] git@github.com:BarretRen/vim-colorscheme.git
 [nerdtree] git@github.com:scrooloose/nerdtree.git
 [vim-airline] git@github.com:vim-airline/vim-airline.git
 [vim-gitgutter] git@github.com:airblade/vim-gitgutter.git
