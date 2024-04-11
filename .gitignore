@@ -2,4 +2,5 @@
 .gitmodules
 # ignore pathogen directories.
 autoload/*
-bundle/*
+plugged/*
+
